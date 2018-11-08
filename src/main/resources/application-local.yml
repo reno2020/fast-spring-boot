@@ -1,0 +1,30 @@
+fastspringboot:
+  isEnableAnsi: true
+  login:
+    token:
+      valid:
+        time:
+          minute: 3600
+logging:
+  level:
+    io:
+      geekidea:
+        fastspringboot: DEBUG
+    org:
+      springframework:
+        web: INFO
+    root: INFO
+server:
+  port: 8888
+  servlet:
+    context-path: /api
+spring:
+  datasource:
+    password: geekidea.io_LJX999
+    url: jdbc:mysql://203.104.32.94:3306/fast_spring_boot?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: fast_spring_boot
+  redis:
+    database: 0
+    host: 203.104.32.94
+    password: ''
+    port: 6379

@@ -1,0 +1,42 @@
+package ${package.Mapper};
+
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import ${superMapperClassPackage};
+import ${package.Entity}.${entity};
+import ${cfg.queryParamPath};
+import ${cfg.queryVoPath};
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
+/**
+ * <p>
+ * $!{table.comment} Mapper 接口
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+#if(${kotlin})
+interface ${table.mapperName} : ${superMapperClass}<${entity}>
+#else
+@Repository
+public interface ${table.mapperName} extends ${superMapperClass}<${entity}> {
+
+    /**
+     * 根据ID获取查询对象
+     * @param id
+     * @return
+     */
+    ${entity}QueryVo getById(String id);
+
+    /**
+     * 获取分页对象
+     * @param page
+     * @param ${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryParam
+     * @return
+     */
+    IPage<${entity}QueryVo> getPageList(@Param("page") Page page, @Param("param") ${entity}QueryParam ${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryParam);
+
+}
+#end

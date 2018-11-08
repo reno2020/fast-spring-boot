@@ -1,0 +1,121 @@
+package ${package.Controller};
+
+import com.alibaba.fastjson.JSON;
+import ${package.Entity}.${entity};
+import ${package.Service}.${table.serviceName};
+import ${cfg.queryParamPath};
+import ${cfg.queryVoPath};
+#if(${superControllerClassPackage})
+import ${superControllerClassPackage};
+#end
+import io.geekidea.fastspringboot.common.api.ApiResult;
+import io.geekidea.fastspringboot.common.web.param.IdParam;
+import io.geekidea.fastspringboot.common.web.vo.Paging;
+#if(${swagger2})
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+#end
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+#if(${restControllerStyle})
+import org.springframework.web.bind.annotation.RestController;
+#else
+import org.springframework.stereotype.Controller;
+#end
+
+
+/**
+ * <p>
+ * $!{table.comment} 前端控制器
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+#if(${restControllerStyle})
+@RestController
+#else
+@Controller
+#end
+@RequestMapping("/${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}")
+@Slf4j
+@Api("$!{table.comment} API")
+#if(${kotlin})
+class ${table.controllerName}#if(${superControllerClass}) : ${superControllerClass}()#end
+
+#else
+#if(${superControllerClass})
+public class ${table.controllerName} extends ${superControllerClass} {
+#else
+public class ${table.controllerName} {
+#end
+
+    @Autowired
+    private ${table.serviceName} ${table.serviceName.substring(0, 1).toLowerCase()}${table.serviceName.substring(1)};
+
+    /**
+    * 添加$!{table.comment}
+    */
+    @PostMapping("/add")
+    @ApiOperation(value = "添加${entity}对象",notes = "添加$!{table.comment}",response = ApiResult.class)
+    public ApiResult<Boolean> addSysUser(@RequestBody ${entity} ${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}) throws Exception{
+        log.debug("${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}:{}", JSON.toJSONString(${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}));
+        boolean flag = ${table.serviceName.substring(0, 1).toLowerCase()}${table.serviceName.substring(1)}.save(${entity.substring(0, 1).toLowerCase()}${entity.substring(1)});
+        log.debug("flag:{}",flag);
+        return success(flag);
+    }
+
+    /**
+    * 修改$!{table.comment}
+    */
+    @PostMapping("/update")
+    @ApiOperation(value = "修改${entity}对象",notes = "修改$!{table.comment}",response = ApiResult.class)
+    public ApiResult<Boolean> updateSysUser(@RequestBody ${entity} ${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}) throws Exception{
+        log.debug("${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}:{}", JSON.toJSONString(${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}));
+        boolean flag = ${table.serviceName.substring(0, 1).toLowerCase()}${table.serviceName.substring(1)}.updateById(${entity.substring(0, 1).toLowerCase()}${entity.substring(1)});
+        log.debug("flag:{}",flag);
+        return success(flag);
+    }
+
+    /**
+    * 删除$!{table.comment}
+    */
+    @PostMapping("/delete")
+    @ApiOperation(value = "删除${entity}对象",notes = "删除$!{table.comment}",response = ApiResult.class)
+    public ApiResult<Boolean> deleteSysUser(@RequestBody IdParam idParam) throws Exception{
+        log.debug("idParam:{}", JSON.toJSONString(idParam));
+        boolean flag = ${table.serviceName.substring(0, 1).toLowerCase()}${table.serviceName.substring(1)}.removeById(idParam.getId());
+        log.debug("flag:{}",flag);
+        return success(flag);
+    }
+
+    /**
+    * 获取$!{table.comment}
+    */
+    @PostMapping("/info")
+    @ApiOperation(value = "获取${entity}对象详情",notes = "查看$!{table.comment}",response = ${entity}QueryVo.class)
+    public ApiResult<${entity}QueryVo> getSysUser(@RequestBody IdParam idParam) throws Exception{
+        log.debug("idParam:{}", JSON.toJSONString(idParam));
+        ${entity}QueryVo ${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryVo = ${table.serviceName.substring(0, 1).toLowerCase()}${table.serviceName.substring(1)}.getById(idParam.getId());
+        log.debug("${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryVo:{}",${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryVo);
+        return success(${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryVo);
+    }
+
+    /**
+     * $!{table.comment}分页列表
+     */
+    @PostMapping("/getPageList")
+    @ApiOperation(value = "获取${entity}分页列表",notes = "$!{table.comment}分页列表",response = ${entity}QueryVo.class)
+    public ApiResult<Paging<${entity}QueryVo>> get${entity}PageList(@RequestBody(required = false) ${entity}QueryParam ${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryParam) throws Exception{
+        log.debug("${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryParam:{}", JSON.toJSONString(${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryParam));
+        Paging<${entity}QueryVo> paging = ${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}Service.getPageList(${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryParam);
+        log.debug("paging:{}",paging);
+        return success(paging);
+    }
+
+}
+
+#end

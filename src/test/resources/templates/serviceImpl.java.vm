@@ -1,0 +1,53 @@
+package ${package.ServiceImpl};
+
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import ${package.Entity}.${entity};
+import ${package.Mapper}.${table.mapperName};
+import ${package.Service}.${table.serviceName};
+import ${cfg.queryParamPath};
+import ${cfg.queryVoPath};
+import io.geekidea.fastspringboot.common.enums.OrderEnum;
+import io.geekidea.fastspringboot.common.web.vo.Paging;
+import ${superServiceImplClassPackage};
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+/**
+ * <p>
+ * $!{table.comment} 服务实现类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Service
+@Transactional(rollbackFor = Exception.class)
+@Slf4j
+#if(${kotlin})
+open class ${table.serviceImplName} : ${superServiceImplClass}<${table.mapperName}, ${entity}>(), ${table.serviceName} {
+
+}
+#else
+public class ${table.serviceImplName} extends BaseServiceImpl<${table.mapperName}, ${entity}> implements ${table.serviceName} {
+
+    @Autowired
+    private ${table.mapperName} ${table.mapperName.substring(0, 1).toLowerCase()}${table.mapperName.substring(1)};
+
+    @Override
+    public ${entity}QueryVo getById(String id) throws Exception{
+        return ${table.mapperName.substring(0, 1).toLowerCase()}${table.mapperName.substring(1)}.getById(id);
+    }
+
+    @Override
+    public Paging<${entity}QueryVo> getPageList(${entity}QueryParam ${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryParam) throws Exception{
+        Page page = new Page();
+        setPageParam(page,${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryParam,"create_time", OrderEnum.DESC);
+        IPage<${entity}QueryVo> iPage = ${table.mapperName.substring(0, 1).toLowerCase()}${table.mapperName.substring(1)}.getPageList(page,${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryParam);
+        return new Paging(iPage);
+    }
+
+}
+#end
