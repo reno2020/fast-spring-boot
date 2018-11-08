@@ -3,6 +3,9 @@
 #### fast-spring-boot 项目主页:
      https://github.com/geekideaio/fast-spring-boot
      
+#### fast-spring-boot api 访问地址
+    http://203.104.32.94:8888/api/docs
+     
 #### fast-spring-boot GIT地址:
      git@github.com:geekideaio/fast-spring-boot.git
     
