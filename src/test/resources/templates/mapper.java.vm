@@ -35,10 +35,10 @@ public interface ${table.mapperName} extends ${superMapperClass}<${entity}> {
     /**
      * 获取分页对象
      * @param page
-     * @param ${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryParam
+     * @param ${cfg.entityObjectName}QueryParam
      * @return
      */
-    IPage<${entity}QueryVo> get${entity}PageList(@Param("page") Page page, @Param("param") ${entity}QueryParam ${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryParam);
+    IPage<${entity}QueryVo> get${entity}PageList(@Param("page") Page page, @Param("param") ${entity}QueryParam ${cfg.entityObjectName}QueryParam);
 
 }
 #end

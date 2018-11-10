@@ -95,8 +95,12 @@ public class CodeGenerator {
                 map.put("queryParamPath",PARENT_PACKAGE + StringPool.DOT + pc.getModuleName() + ".web.param." + underlineToPascal(TABLE_NAME) + "QueryParam");
                 // 响应结果包路径
                 map.put("queryVoPath",PARENT_PACKAGE + StringPool.DOT + pc.getModuleName() + ".web.vo." + underlineToPascal(TABLE_NAME) + "QueryVo");
-                // 实体对象属性名称
+                // 实体对象名称
                 map.put("entityObjectName",underlineToCamel(TABLE_NAME));
+                // service对象名称
+                map.put("serviceObjectName",underlineToCamel(TABLE_NAME) + "Service");
+                // mapper对象名称
+                map.put("mapperObjectName",underlineToCamel(TABLE_NAME) + "Mapper");
                 this.setMap(map);
             }
         };

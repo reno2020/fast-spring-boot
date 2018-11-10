@@ -36,17 +36,17 @@ open class ${table.serviceImplName} : ${superServiceImplClass}<${table.mapperNam
 public class ${table.serviceImplName} extends BaseServiceImpl<${table.mapperName}, ${entity}> implements ${table.serviceName} {
 
     @Autowired
-    private ${table.mapperName} ${table.mapperName.substring(0, 1).toLowerCase()}${table.mapperName.substring(1)};
+    private ${table.mapperName} ${cfg.mapperObjectName};
 
     @Override
     public ${entity}QueryVo get${entity}ById(Serializable id) throws Exception{
-        return ${table.mapperName.substring(0, 1).toLowerCase()}${table.mapperName.substring(1)}.get${entity}ById(id);
+        return ${cfg.mapperObjectName}.get${entity}ById(id);
     }
 
     @Override
-    public Paging<${entity}QueryVo> get${entity}PageList(${entity}QueryParam ${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryParam) throws Exception{
-        Page page = setPageParam(${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryParam,"create_time", OrderEnum.DESC);
-        IPage<${entity}QueryVo> iPage = ${table.mapperName.substring(0, 1).toLowerCase()}${table.mapperName.substring(1)}.get${entity}PageList(page,${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryParam);
+    public Paging<${entity}QueryVo> get${entity}PageList(${entity}QueryParam ${cfg.entityObjectName}QueryParam) throws Exception{
+        Page page = setPageParam(${cfg.entityObjectName}QueryParam,"create_time", OrderEnum.DESC);
+        IPage<${entity}QueryVo> iPage = ${cfg.mapperObjectName}.get${entity}PageList(page,${cfg.entityObjectName}QueryParam);
         return new Paging(iPage);
     }
 
