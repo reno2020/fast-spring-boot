@@ -9,7 +9,7 @@
 #### fast-spring-boot GIT地址:
    [git@github.com:geekideaio/fast-spring-boot.git](git@github.com:geekideaio/fast-spring-boot.git)
     
-#### fast-spring-boot技术堆栈:
+#### fast-spring-boot技术栈:
     Jdk 版本 : 1.8
     内嵌Tomcat版本 : 9.0.12
     Spring boot版本 : 2.1.0.RELEASE
