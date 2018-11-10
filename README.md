@@ -21,7 +21,7 @@
     druid 版本 : 1.1.10
     redis 版本 : lettuce5.12.RELEASE
 
-#### 后台主要目录:
+#### 后台主要目录: 
 	src : 
 		common : 公共代码
 		config : 配置代码
