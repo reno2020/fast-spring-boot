@@ -7,7 +7,7 @@
    [http://203.104.32.94:8888/api/docs](http://203.104.32.94:8888/api/docs)
      
 #### fast-spring-boot GIT地址:
-   [git@github.com:geekideaio/fast-spring-boot.git](git@github.com:geekideaio/fast-spring-boot.git)
+    git@github.com:geekideaio/fast-spring-boot.git
     
 #### fast-spring-boot技术栈:
     Jdk 版本 : 1.8
