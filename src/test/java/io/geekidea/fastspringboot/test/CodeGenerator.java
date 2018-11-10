@@ -43,7 +43,7 @@ public class CodeGenerator {
     // 生成的表名称
     private static final String TABLE_NAME = "sys_log";
     // 主键数据库列名称
-    private static final String PRIMARY_KEY_NAME = "log_id"; // TODO
+    private static final String PK_ID_COLUMN_NAME = "log_id";
     // ############################ 配置部分 end ############################
 
 
@@ -101,6 +101,10 @@ public class CodeGenerator {
                 map.put("serviceObjectName",underlineToCamel(TABLE_NAME) + "Service");
                 // mapper对象名称
                 map.put("mapperObjectName",underlineToCamel(TABLE_NAME) + "Mapper");
+                // 主键ID列名
+                map.put("pkIdColumnName",PK_ID_COLUMN_NAME);
+                // 主键ID驼峰名称
+                map.put("pkIdCamelName",underlineToCamel(PK_ID_COLUMN_NAME));
                 this.setMap(map);
             }
         };
