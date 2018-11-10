@@ -7,11 +7,11 @@
         log_id, type, content, create_id, create_time
     </sql>
 
-    <select id="getById" resultType="io.geekidea.fastspringboot.system.web.vo.SysLogQueryVo">
+    <select id="getSysLogById" resultType="io.geekidea.fastspringboot.system.web.vo.SysLogQueryVo">
         select <include refid="Base_Column_List"/> from sys_log where id = #{id}
     </select>
 
-    <select id="getPageList" resultType="io.geekidea.fastspringboot.system.web.vo.SysLogQueryVo">
+    <select id="getSysLogPageList" resultType="io.geekidea.fastspringboot.system.web.vo.SysLogQueryVo">
         select <include refid="Base_Column_List"/> from sys_log
     </select>
 

@@ -9,6 +9,8 @@ import ${cfg.queryVoPath};
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.io.Serializable;
+
 /**
  * <p>
  * $!{table.comment} Mapper 接口
@@ -28,7 +30,7 @@ public interface ${table.mapperName} extends ${superMapperClass}<${entity}> {
      * @param id
      * @return
      */
-    ${entity}QueryVo getById(String id);
+    ${entity}QueryVo get${entity}ById(Serializable id);
 
     /**
      * 获取分页对象
@@ -36,7 +38,7 @@ public interface ${table.mapperName} extends ${superMapperClass}<${entity}> {
      * @param ${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryParam
      * @return
      */
-    IPage<${entity}QueryVo> getPageList(@Param("page") Page page, @Param("param") ${entity}QueryParam ${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryParam);
+    IPage<${entity}QueryVo> get${entity}PageList(@Param("page") Page page, @Param("param") ${entity}QueryParam ${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryParam);
 
 }
 #end

@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
  * </p>
  *
  * @author liujixiang
- * @since 2018-11-08
+ * @since 2018-11-10
  */
 @RestController
 @RequestMapping("/sysLog")
@@ -79,7 +79,7 @@ public class SysLogController extends BaseController {
     @ApiOperation(value = "获取SysLog对象详情",notes = "查看系统日志",response = SysLogQueryVo.class)
     public ApiResult<SysLogQueryVo> getSysUser(@RequestBody IdParam idParam) throws Exception{
         log.debug("idParam:{}", JSON.toJSONString(idParam));
-        SysLogQueryVo sysLogQueryVo = sysLogService.getById(idParam.getId());
+        SysLogQueryVo sysLogQueryVo = sysLogService.getSysLogById(idParam.getId());
         log.debug("sysLogQueryVo:{}",sysLogQueryVo);
         return success(sysLogQueryVo);
     }
@@ -91,7 +91,7 @@ public class SysLogController extends BaseController {
     @ApiOperation(value = "获取SysLog分页列表",notes = "系统日志分页列表",response = SysLogQueryVo.class)
     public ApiResult<Paging<SysLogQueryVo>> getSysLogPageList(@RequestBody(required = false) SysLogQueryParam sysLogQueryParam) throws Exception{
         log.debug("sysLogQueryParam:{}", JSON.toJSONString(sysLogQueryParam));
-        Paging<SysLogQueryVo> paging = sysLogService.getPageList(sysLogQueryParam);
+        Paging<SysLogQueryVo> paging = sysLogService.getSysLogPageList(sysLogQueryParam);
         log.debug("paging:{}",paging);
         return success(paging);
     }

@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author liujixiang
- * @date 2018-11-08
+ * @date 2018-11-10
  */
 @Data
 @ApiModel(value="SysLogQueryVo对象", description="系统日志查询参数")

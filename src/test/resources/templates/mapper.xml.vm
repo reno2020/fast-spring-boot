@@ -34,11 +34,11 @@
         ${table.fieldNames}
     </sql>
 
-    <select id="getById" resultType="${cfg.queryVoPath}">
+    <select id="get${entity}ById" resultType="${cfg.queryVoPath}">
         select <include refid="Base_Column_List"/> from ${table.name} where id = #{id}
     </select>
 
-    <select id="getPageList" resultType="${cfg.queryVoPath}">
+    <select id="get${entity}PageList" resultType="${cfg.queryVoPath}">
         select <include refid="Base_Column_List"/> from ${table.name}
     </select>
 

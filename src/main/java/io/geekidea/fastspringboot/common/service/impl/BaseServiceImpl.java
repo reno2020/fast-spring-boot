@@ -13,11 +13,12 @@ import io.geekidea.fastspringboot.common.web.vo.QueryParam;
  */
 public abstract class BaseServiceImpl<M extends BaseMapper<T>, T> extends ServiceImpl<M, T> implements BaseService<T> {
 
-    protected void setPageParam(Page page, QueryParam queryParam) {
-        setPageParam(page,queryParam,null,null);
+    protected Page setPageParam(QueryParam queryParam) {
+        return setPageParam(queryParam,null,null);
     }
 
-    protected void setPageParam(Page page, QueryParam queryParam, String defaultOrderField, OrderEnum orderEnum) {
+    protected Page setPageParam(QueryParam queryParam, String defaultOrderField, OrderEnum orderEnum) {
+        Page page = new Page();
         page.setCurrent(queryParam.getCurrent());
         page.setSize(queryParam.getSize());
         page.setAsc(queryParam.getAscs());
@@ -28,14 +29,8 @@ public abstract class BaseServiceImpl<M extends BaseMapper<T>, T> extends Servic
         }else {
             page.setAsc(defaultOrderField);
         }
-    }
 
-    protected void setDefaultOrder(Page page, String orderField, OrderEnum orderEnum) {
-        if (orderEnum == OrderEnum.DESC){
-            page.setDesc(orderField);
-        }else {
-            page.setAsc(orderField);
-        }
+        return page;
     }
 
 }

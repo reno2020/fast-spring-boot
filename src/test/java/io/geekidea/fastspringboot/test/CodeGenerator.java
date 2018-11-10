@@ -91,8 +91,12 @@ public class CodeGenerator {
             public void initMap() {
                 Map<String, Object> map = new HashMap<String, Object>();
                 map.put("customField", "Hello " + this.getConfig().getGlobalConfig().getAuthor());
+                // 查询参数包路径
                 map.put("queryParamPath",PARENT_PACKAGE + StringPool.DOT + pc.getModuleName() + ".web.param." + underlineToPascal(TABLE_NAME) + "QueryParam");
+                // 响应结果包路径
                 map.put("queryVoPath",PARENT_PACKAGE + StringPool.DOT + pc.getModuleName() + ".web.vo." + underlineToPascal(TABLE_NAME) + "QueryVo");
+                // 实体对象属性名称
+                map.put("entityObjectName",underlineToCamel(TABLE_NAME));
                 this.setMap(map);
             }
         };

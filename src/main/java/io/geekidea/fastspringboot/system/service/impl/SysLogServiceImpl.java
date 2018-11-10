@@ -15,13 +15,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.Serializable;
+
 /**
  * <p>
  * 系统日志 服务实现类
  * </p>
  *
  * @author liujixiang
- * @since 2018-11-08
+ * @since 2018-11-10
  */
 @Service
 @Transactional(rollbackFor = Exception.class)
@@ -32,15 +34,14 @@ public class SysLogServiceImpl extends BaseServiceImpl<SysLogMapper, SysLog> imp
     private SysLogMapper sysLogMapper;
 
     @Override
-    public SysLogQueryVo getById(String id) throws Exception{
-        return sysLogMapper.getById(id);
+    public SysLogQueryVo getSysLogById(Serializable id) throws Exception{
+        return sysLogMapper.getSysLogById(id);
     }
 
     @Override
-    public Paging<SysLogQueryVo> getPageList(SysLogQueryParam sysLogQueryParam) throws Exception{
-        Page page = new Page();
-        setPageParam(page,sysLogQueryParam,"create_time", OrderEnum.DESC);
-        IPage<SysLogQueryVo> iPage = sysLogMapper.getPageList(page,sysLogQueryParam);
+    public Paging<SysLogQueryVo> getSysLogPageList(SysLogQueryParam sysLogQueryParam) throws Exception{
+        Page page = setPageParam(sysLogQueryParam,"create_time", OrderEnum.DESC);
+        IPage<SysLogQueryVo> iPage = sysLogMapper.getSysLogPageList(page,sysLogQueryParam);
         return new Paging(iPage);
     }
 

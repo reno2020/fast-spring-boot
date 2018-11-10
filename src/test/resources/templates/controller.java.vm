@@ -99,7 +99,7 @@ public class ${table.controllerName} {
     @ApiOperation(value = "获取${entity}对象详情",notes = "查看$!{table.comment}",response = ${entity}QueryVo.class)
     public ApiResult<${entity}QueryVo> getSysUser(@RequestBody IdParam idParam) throws Exception{
         log.debug("idParam:{}", JSON.toJSONString(idParam));
-        ${entity}QueryVo ${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryVo = ${table.serviceName.substring(0, 1).toLowerCase()}${table.serviceName.substring(1)}.getById(idParam.getId());
+        ${entity}QueryVo ${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryVo = ${table.serviceName.substring(0, 1).toLowerCase()}${table.serviceName.substring(1)}.get${entity}ById(idParam.getId());
         log.debug("${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryVo:{}",${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryVo);
         return success(${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryVo);
     }
@@ -111,7 +111,7 @@ public class ${table.controllerName} {
     @ApiOperation(value = "获取${entity}分页列表",notes = "$!{table.comment}分页列表",response = ${entity}QueryVo.class)
     public ApiResult<Paging<${entity}QueryVo>> get${entity}PageList(@RequestBody(required = false) ${entity}QueryParam ${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryParam) throws Exception{
         log.debug("${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryParam:{}", JSON.toJSONString(${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryParam));
-        Paging<${entity}QueryVo> paging = ${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}Service.getPageList(${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryParam);
+        Paging<${entity}QueryVo> paging = ${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}Service.get${entity}PageList(${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryParam);
         log.debug("paging:{}",paging);
         return success(paging);
     }

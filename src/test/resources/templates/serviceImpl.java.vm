@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.Serializable;
+
 /**
  * <p>
  * $!{table.comment} 服务实现类
@@ -37,15 +39,14 @@ public class ${table.serviceImplName} extends BaseServiceImpl<${table.mapperName
     private ${table.mapperName} ${table.mapperName.substring(0, 1).toLowerCase()}${table.mapperName.substring(1)};
 
     @Override
-    public ${entity}QueryVo getById(String id) throws Exception{
-        return ${table.mapperName.substring(0, 1).toLowerCase()}${table.mapperName.substring(1)}.getById(id);
+    public ${entity}QueryVo get${entity}ById(Serializable id) throws Exception{
+        return ${table.mapperName.substring(0, 1).toLowerCase()}${table.mapperName.substring(1)}.get${entity}ById(id);
     }
 
     @Override
-    public Paging<${entity}QueryVo> getPageList(${entity}QueryParam ${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryParam) throws Exception{
-        Page page = new Page();
-        setPageParam(page,${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryParam,"create_time", OrderEnum.DESC);
-        IPage<${entity}QueryVo> iPage = ${table.mapperName.substring(0, 1).toLowerCase()}${table.mapperName.substring(1)}.getPageList(page,${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryParam);
+    public Paging<${entity}QueryVo> get${entity}PageList(${entity}QueryParam ${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryParam) throws Exception{
+        Page page = setPageParam(${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryParam,"create_time", OrderEnum.DESC);
+        IPage<${entity}QueryVo> iPage = ${table.mapperName.substring(0, 1).toLowerCase()}${table.mapperName.substring(1)}.get${entity}PageList(page,${entity.substring(0, 1).toLowerCase()}${entity.substring(1)}QueryParam);
         return new Paging(iPage);
     }
 
