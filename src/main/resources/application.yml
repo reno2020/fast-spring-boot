@@ -121,6 +121,28 @@ spring:
         max-wait: 10s
         min-idle: 2
       shutdown-timeout: 100ms
+
+# RabbitMQ 配置
+  rabbitmq:
+    host: 39.106.37.56
+    port: 5672
+    username: admin
+    password: admin123
+    template:
+      # 启用重试机制,重试间隔时间为2s,最多重试3次
+      retry:
+        enabled: true
+        initial-interval: 2s
+        max-attempts: 3
+      # 定义默认的队列名称
+      queue: fast-spring-boot-queue
+      # 定义默认的交换机名称
+      exchange: fast-spring-boot-exchange
+      # 定义默认的路由key
+      routing-key: fast-spring-boot-key
+
+
+
 swagger:
   base:
     package: io.geekidea.fastspringboot
