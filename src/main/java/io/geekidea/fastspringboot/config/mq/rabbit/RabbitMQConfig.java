@@ -1,4 +1,4 @@
-package io.geekidea.fastspringboot.config.mq.rabbitmq;
+package io.geekidea.fastspringboot.config.mq.rabbit;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;

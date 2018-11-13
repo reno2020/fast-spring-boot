@@ -113,6 +113,7 @@ spring:
     date-format: yyy-MM-dd HH:mm:ss
   profiles:
     active: '@profileActive@'
+
   redis:
     lettuce:
       pool:
@@ -134,12 +135,22 @@ spring:
         enabled: true
         initial-interval: 2s
         max-attempts: 3
-      # 定义默认的队列名称
       queue: fast-spring-boot-queue
       # 定义默认的交换机名称
       exchange: fast-spring-boot-exchange
       # 定义默认的路由key
       routing-key: fast-spring-boot-key
+
+  kafka:
+    bootstrap-servers: 203.104.37.38:9092
+    producer:
+      retries: 0
+      batch-size: 4096
+      buffer-memory: 40960
+    consumer:
+      group-id: fast-spring-boot-group
+    template:
+      default-topic: fast-spring-boot-topic
 
 
 
@@ -154,3 +165,5 @@ swagger:
   title: fast-spring-boot
   url: ''
   version: 1.0
+
+hello: hello....

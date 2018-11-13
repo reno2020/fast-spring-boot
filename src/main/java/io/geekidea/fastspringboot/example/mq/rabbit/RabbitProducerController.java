@@ -1,4 +1,4 @@
-package io.geekidea.fastspringboot.example.mq.rabbitmq;
+package io.geekidea.fastspringboot.example.mq.rabbit;
 
 import io.geekidea.fastspringboot.common.api.ApiResult;
 import lombok.extern.slf4j.Slf4j;
@@ -13,15 +13,15 @@ import java.time.LocalDateTime;
 
 /**
  * <p>
- *     生产者
+ *     RabbitMQ生产者
  * </p>
  * @author liujixiang
  * @since 2018/11/12
  */
 @RestController
-@RequestMapping("/rabbitmq")
+@RequestMapping("/rabbit")
 @Slf4j
-public class ProducerController {
+public class RabbitProducerController {
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
