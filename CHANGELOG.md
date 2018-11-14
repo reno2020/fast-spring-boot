@@ -1,5 +1,10 @@
 # fast-spring-boot CHANGELOG
 
+## [v0.4] 2018.11.13
+- Kafka配置和使用示例
+
+## [v0.3] 2018.11.12
+- RabbitMQ配置和使用示例
 
 ## [v0.2] 2018.11.10
 - 修改getById方法主键类型为Serializable
