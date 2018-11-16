@@ -115,13 +115,21 @@ spring:
     active: '@profileActive@'
 
   redis:
-    lettuce:
+    jedis:
       pool:
-        max-active: 20
-        max-idle: 8
-        max-wait: 10s
-        min-idle: 2
-      shutdown-timeout: 100ms
+        max-active: 2000
+        max-wait: -1ms
+        min-idle: 8
+        max-idle: 200
+    timeout: 10s
+  #    lettuce:
+#      pool:
+#        max-active: 200
+#        max-idle: 8
+#        max-wait: 10s
+#        min-idle: 2
+#      shutdown-timeout: 3s
+
 
 # RabbitMQ 配置
   rabbitmq:
@@ -152,6 +160,17 @@ spring:
     template:
       default-topic: fast-spring-boot-topic
 
+  # Redis分布式锁
+  klock:
+    address: 203.104.32.94:6379
+    password: redis_A8aJMYxrBpj50t4I
+    # Redis DB索引
+    database: 0
+    # 获取锁最长阻塞时间（默认：60，单位：秒）
+    wait-time: 60
+    # 已获取锁后自动释放时间（默认：60，单位：秒）
+    lease-time: 60
+
 
 
 swagger:
@@ -165,5 +184,3 @@ swagger:
   title: fast-spring-boot
   url: ''
   version: 1.0
-
-hello: hello....

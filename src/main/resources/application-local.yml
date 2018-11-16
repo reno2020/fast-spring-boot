@@ -26,5 +26,5 @@ spring:
   redis:
     database: 0
     host: 203.104.32.94
-    password: ''
+    password: redis_A8aJMYxrBpj50t4I
     port: 6379
