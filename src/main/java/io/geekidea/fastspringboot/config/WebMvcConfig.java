@@ -70,10 +70,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/webjars*")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
 
-        registry.addResourceHandler("/*.html")
-                .addResourceLocations("classpath:/META-INF/spring-boot-admin-server-ui/");
-        registry.addResourceHandler("/assets/**")
-                .addResourceLocations("classpath:/META-INF/spring-boot-admin-server-ui/assets/");
+//        registry.addResourceHandler("/*.html")
+//                .addResourceLocations("classpath:/META-INF/spring-boot-admin-server-ui/");
+//        registry.addResourceHandler("/assets/**")
+//                .addResourceLocations("classpath:/META-INF/spring-boot-admin-server-ui/assets/");
 
 //        registry.addResourceHandler("view/**")
 //                .addResourceLocations("classpath:/static/view/");
