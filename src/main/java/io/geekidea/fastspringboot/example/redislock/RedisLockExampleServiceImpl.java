@@ -4,9 +4,11 @@ import io.geekidea.fastspringboot.system.entity.SysLog;
 import io.geekidea.fastspringboot.system.mapper.SysLogMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.klock.annotation.Klock;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * Redis分布式锁示例服务实现
@@ -21,9 +23,19 @@ public class RedisLockExampleServiceImpl implements RedisLockExampleService {
     @Autowired
     private SysLogMapper sysLogMapper;
 
-    @Klock
+    @Autowired
+    private RedisTemplate redisTemplate;
+
     @Override
     public boolean update(SysLog sysLog) {
+        // 使用redisTemplate setIfAbsent实现简单的分布式锁
+        // TODO 使用AOP切面优化
+        Long redisKey = sysLog.getLogId();
+        Boolean flag = redisTemplate.opsForValue().setIfAbsent(redisKey,sysLog.toString(),1, TimeUnit.MINUTES);
+        if (!flag){
+            throw new RuntimeException("该ID已经在修改，请稍后再试。");
+        }
+
         System.out.println("update...");
         int result = sysLogMapper.updateById(sysLog);
         System.out.println("result:" + result);
