@@ -11,16 +11,23 @@
     
 #### fast-spring-boot技术栈:
     Jdk 版本 : 1.8
+    MySQL 5.7
     内嵌Tomcat版本 : 9.0.12
     Spring boot版本 : 2.1.0.RELEASE
     Spring 版本 : 5.1.2.RELEASE
-    Mybatis Plus 版本 : 3.0.5
     Mybatis 版本 : 3.4.6
+    Mybatis Plus 版本 : 3.0.5
     Mybatis-spring 版本 : 1.3.2
     fastjson 版本 : 1.2.51
     druid 版本 : 1.1.10
     redis 版本 : lettuce5.12.RELEASE
-
+    Spring boot admin 版本 ：2.1.0
+    commons codec 版本 ：1.9
+    commons net 版本 ：3.6
+    spring-rabbit 版本 ：2.1.0.RELEASE
+    kafka-clients 版本 ：2.0.0
+    
+    
 #### 后台主要目录:  
 	src : 
 		common : 公共代码

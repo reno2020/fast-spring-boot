@@ -49,7 +49,10 @@
         <hibernate-validator.version>6.0.13.Final</hibernate-validator.version>
         <spring-boot-admin.version>2.1.0</spring-boot-admin.version>
         <project-parent.version>${parent.version}</project-parent.version>
-
+        <commons_codec_version>1.9</commons_codec_version>
+        <commons_net_version>3.6</commons_net_version>
+        <jansi_version>1.17.1</jansi_version>
+        <lombok_version>1.18.0</lombok_version>
 
     </properties>
 
@@ -151,14 +154,14 @@
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
-            <version>1.9</version>
+            <version>${commons_codec_version}</version>
         </dependency>
 
 
         <dependency>
             <groupId>commons-net</groupId>
             <artifactId>commons-net</artifactId>
-            <version>3.6</version>
+            <version>${commons_net_version}</version>
         </dependency>
         <!-- apache commons end -->
 
@@ -178,21 +181,16 @@
         <dependency>
             <groupId>org.fusesource.jansi</groupId>
             <artifactId>jansi</artifactId>
-            <version>1.17.1</version>
+            <version>${jansi_version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.0</version>
+            <version>${lombok_version}</version>
             <scope>compile</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-pool2</artifactId>
-            <version>2.0</version>
-        </dependency>
 
         <!-- RabbitMQ -->
         <dependency>
