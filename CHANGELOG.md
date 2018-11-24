@@ -1,5 +1,15 @@
 # fast-spring-boot CHANGELOG
 
+## [v0.5] 2018.11.24
+- 使用maven assembly插件打包
+- 启动提示优化,fast spring boot banner
+- 启动成功打印主页API访问地址和swagger api docs访问地址
+- 将全部的System.out.println()替换成log.debug或者log.info
+- 将Logger全部替换成@Slf4j
+
+@MrLiuCoder
+MrLiuCoder committed 2 minutes ago
+ …og.info,Logger全部切换成@Sl4j
 ## [v0.4] 2018.11.13
 - Kafka配置和使用示例
 
