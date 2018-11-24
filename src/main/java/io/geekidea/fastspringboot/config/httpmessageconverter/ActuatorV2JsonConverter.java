@@ -1,6 +1,7 @@
 package io.geekidea.fastspringboot.config.httpmessageconverter;
 
 import com.alibaba.fastjson.JSON;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpInputMessage;
 import org.springframework.http.HttpOutputMessage;
 import org.springframework.http.MediaType;
@@ -18,6 +19,7 @@ import java.nio.charset.StandardCharsets;
  * @author liujixiang
  * @date 2018-11-08
  */
+@Slf4j
 public class ActuatorV2JsonConverter extends AbstractHttpMessageConverter<Object> {
 
     public static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
@@ -37,7 +39,7 @@ public class ActuatorV2JsonConverter extends AbstractHttpMessageConverter<Object
     @Override
     protected Object readInternal(Class<?> clazz, HttpInputMessage inputMessage) throws IOException, HttpMessageNotReadableException {
 
-        System.out.println("readInternal..........");
+        log.debug("readInternal..........");
         return null;
     }
 

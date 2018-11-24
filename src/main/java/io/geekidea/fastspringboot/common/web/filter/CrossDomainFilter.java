@@ -2,8 +2,7 @@ package io.geekidea.fastspringboot.common.web.filter;
 
 import com.alibaba.fastjson.JSON;
 import io.geekidea.fastspringboot.common.api.ApiResult;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -16,9 +15,8 @@ import java.io.PrintWriter;
  * @author liujixiang
  * @date 2018-11-08
  */
+@Slf4j
 public class CrossDomainFilter implements Filter {
-
-    private Logger logger = LoggerFactory.getLogger(CrossDomainFilter.class);
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

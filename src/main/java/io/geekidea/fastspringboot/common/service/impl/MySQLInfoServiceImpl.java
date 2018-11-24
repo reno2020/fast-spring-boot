@@ -4,8 +4,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import io.geekidea.fastspringboot.common.entity.MySQLInfo;
 import io.geekidea.fastspringboot.common.mapper.MySQLInfoMapper;
 import io.geekidea.fastspringboot.common.service.MySQLInfoService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,9 +19,8 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional
+@Slf4j
 public class MySQLInfoServiceImpl extends ServiceImpl<MySQLInfoMapper, MySQLInfo> implements MySQLInfoService {
-
-    private static Logger logger = LoggerFactory.getLogger(MySQLInfoServiceImpl.class);
 
     @Autowired
     private MySQLInfoMapper mySQLInfoMapper;

@@ -1,5 +1,6 @@
 package io.geekidea.fastspringboot.util;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,8 @@ import javax.annotation.PostConstruct;
  * @date 2018-11-08
  */
 @Component
+@Slf4j
 public class RedisCacheUtil {
-
-    private static final Logger logger = LoggerFactory.getLogger(RedisCacheUtil.class);
 
     private static RedisCacheUtil redisCacheUtil;
 

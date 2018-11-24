@@ -2,9 +2,8 @@ package io.geekidea.fastspringboot.common.web.interceptor;
 
 import io.geekidea.fastspringboot.common.constant.CommonConstant;
 import io.geekidea.fastspringboot.util.LoginUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.method.HandlerMethod;
@@ -21,8 +20,8 @@ import java.util.concurrent.TimeUnit;
  * @author liujixiang
  * @date 2018-11-08
  */
+@Slf4j
 public class TokenTimeoutInterceptor extends HandlerInterceptorAdapter {
-	private static Logger logger = LoggerFactory.getLogger(TokenTimeoutInterceptor.class);
 
 	@Autowired
 	private RedisTemplate redisTemplate;

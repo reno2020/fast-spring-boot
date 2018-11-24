@@ -4,9 +4,8 @@ import io.geekidea.fastspringboot.common.api.ApiResult;
 import io.geekidea.fastspringboot.common.constant.CommonConstant;
 import io.geekidea.fastspringboot.common.constant.ResponseCode;
 import io.geekidea.fastspringboot.util.HttpServletResponseUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -23,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author liujixiang
  * @since 2018-11-08
  */
+@Slf4j
 public class PermissionInterceptor extends HandlerInterceptorAdapter {
-	private static Logger logger = LoggerFactory.getLogger(PermissionInterceptor.class);
 
 	@Value("${fastspringboot.permission.interceptor.function.exclude.path}")
 	private String[] functionExcludePaths;

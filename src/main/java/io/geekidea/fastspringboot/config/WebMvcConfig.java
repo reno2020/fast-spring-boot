@@ -3,8 +3,7 @@ package io.geekidea.fastspringboot.config;
 import io.geekidea.fastspringboot.common.web.interceptor.PermissionInterceptor;
 import io.geekidea.fastspringboot.common.web.interceptor.TokenTimeoutInterceptor;
 import io.geekidea.fastspringboot.config.httpmessageconverter.ActuatorV2JsonConverter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,9 +18,8 @@ import java.util.Arrays;
  * @date 2018-11-08
  */
 @Configuration
+@Slf4j
 public class WebMvcConfig implements WebMvcConfigurer {
-
-    private static final Logger logger = LoggerFactory.getLogger(WebMvcConfig.class);
 
     @Value("${fastspringboot.token.timeout.interceptor.exclude.path}")
     private String[] tokenTimeoutExcludePaths;
@@ -49,7 +47,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        logger.info("PermissionInterceptor excludePaths : {}", Arrays.toString(permissionExcludePaths));
+        log.info("PermissionInterceptor excludePaths : {}", Arrays.toString(permissionExcludePaths));
         // 1.TOKEN超时拦截器
 //        registry.addInterceptor(tokenTimeoutInterceptor())
 //                .addPathPatterns("/**")

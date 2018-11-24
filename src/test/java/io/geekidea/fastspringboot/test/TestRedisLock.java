@@ -34,26 +34,26 @@ public class TestRedisLock {
     public void test() throws InterruptedException {
         redisTemplate.opsForValue().set("hello","Hello Redis...");
         Object hello = redisTemplate.opsForValue().get("hello");
-        System.out.println("hello = " + hello);
+        log.debug("hello = " + hello);
 
         int count = 10;
         ExecutorService executorService = Executors.newFixedThreadPool(count);
         for (int i = 0; i < count; i++) {
             int finalI = i;
             executorService.execute(() -> {
-                System.out.println("i:"+finalI);
+                log.debug("i:"+finalI);
                 SysLog sysLog = new SysLog();
                 sysLog.setLogId(1060439085228830721L);
                 sysLog.setContent("test redis lock " + LocalDateTime.now());
                 sysLog.setCreateTime(LocalDateTime.now());
                 sysLog.setType(true);
-                System.out.println("sysLog:"+sysLog);
+                log.debug("sysLog:"+sysLog);
                 boolean flag = redisLockExampleService.update(sysLog);
-                System.out.println("flag:"+flag);
+                log.debug("flag:"+flag);
                 if (flag){
-                    System.out.println("修改成功");
+                    log.debug("修改成功");
                 }else{
-                    System.out.println("修改失败");
+                    log.debug("修改失败");
                 }
             }
 
@@ -75,20 +75,20 @@ public class TestRedisLock {
         for (int i = 0; i < count; i++) {
             int finalI = i;
             executorService.execute(() -> {
-                        System.out.println("i:"+finalI);
+                        log.debug("i:"+finalI);
                         SysLog sysLog = new SysLog();
                         sysLog.setLogId(1060439085228830721L);
                         sysLog.setContent("test redis setNx " + LocalDateTime.now());
                         sysLog.setCreateTime(LocalDateTime.now());
                         sysLog.setType(true);
-                        System.out.println("sysLog:"+sysLog);
+                        log.debug("sysLog:"+sysLog);
                         boolean flag = redisTemplate.opsForValue().setIfAbsent(key,"123...",5, TimeUnit.MINUTES);
-                        System.out.println(Thread.currentThread().getName());
-                        System.out.println("flag:"+flag);
+                        log.debug(Thread.currentThread().getName());
+                        log.debug("flag:"+flag);
                         if (flag){
-                            System.out.println("设置成功");
+                            log.debug("设置成功");
                         }else{
-                            System.out.println("设置失败");
+                            log.debug("设置失败");
                         }
                     }
 

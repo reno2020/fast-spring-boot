@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 @AutoConfigureAfter(KafkaProperties.class)
 public class KafkaConsumer {
     public KafkaConsumer(){
-        System.out.println("init..........");
+        log.debug("init..........");
     }
     @KafkaListener(topics = {"${spring.kafka.template.default-topic}"})
     public void process(String message){

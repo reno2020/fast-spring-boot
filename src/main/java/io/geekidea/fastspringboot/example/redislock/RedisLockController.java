@@ -49,19 +49,19 @@ public class RedisLockController {
         for (int i = 0; i < count; i++) {
             int finalI = i;
             executorService.execute(() -> {
-                        System.out.println("i = " + finalI);
+                        log.debug("i = " + finalI);
                         SysLog sysLog = new SysLog();
                         sysLog.setLogId(1060439085228830721L);
                         sysLog.setContent("test redis lock " + UUID.randomUUID().toString());
                         sysLog.setCreateTime(LocalDateTime.now());
                         sysLog.setType(true);
-                        System.out.println("sysLog = " + sysLog);
+                        log.debug("sysLog = " + sysLog);
                         boolean flag = redisLockExampleService.update(sysLog);
-                        System.out.println("flag = " + flag);
+                        log.debug("flag = " + flag);
                         if (flag){
-                            System.out.println("修改成功");
+                            log.debug("修改成功");
                         }else{
-                            System.out.println("修改失败");
+                            log.debug("修改失败");
                         }
                     }
 

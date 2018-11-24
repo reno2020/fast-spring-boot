@@ -4,7 +4,7 @@
 
     <groupId>io.geekidea</groupId>
     <artifactId>fast-spring-boot</artifactId>
-    <version>0.1</version>
+    <version>0.5.RELEASE</version>
     <packaging>jar</packaging>
 
     <name>fast-spring-boot</name>
@@ -53,6 +53,7 @@
         <commons_net_version>3.6</commons_net_version>
         <jansi_version>1.17.1</jansi_version>
         <lombok_version>1.18.0</lombok_version>
+        <commons_pool2_version>2.0</commons_pool2_version>
 
     </properties>
 
@@ -191,6 +192,11 @@
             <scope>compile</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+            <version>${commons_pool2_version}</version>
+        </dependency>
 
         <!-- RabbitMQ -->
         <dependency>
@@ -222,70 +228,94 @@
         </dependency>
         <!-- Spring boot 监控 end -->
 
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
         <finalName>fast-spring-boot</finalName>
 
         <resources>
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**/*.xml</include>
-                </includes>
-                <filtering>false</filtering>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-                <excludes>
-                    <exclude>application.yml</exclude>
-                    <exclude>application-local.yml</exclude>
-                    <exclude>application-dev.yml</exclude>
-                    <exclude>application-int.yml</exclude>
-                    <exclude>application-uat.yml</exclude>
-                    <exclude>application-stag.yml</exclude>
-                    <exclude>application-prod.yml</exclude>
-                </excludes>
-            </resource>
+            <!-- 资源文件配置 -->
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
                 <includes>
-                    <include>application-${profileActive}.yml</include>
                     <include>application.yml</include>
+                    <include>application-${profileActive}.yml</include>
+                    <include>mapper/**/*.xml</include>
+                    <include>static/**</include>
+                    <include>templates/**</include>
                 </includes>
             </resource>
-
-            <resource>
-                <directory>lib/</directory>
-                <targetPath>lib</targetPath>
-                <includes>
-                    <include>**/*.jar</include>
-                </includes>
-            </resource>
-
-
         </resources>
 
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <!-- 项目启动类 -->
+                            <mainClass>io.geekidea.fastspringboot.Application</mainClass>
+                            <!-- 依赖的jar的目录前缀 -->
+                            <classpathPrefix>../lib</classpathPrefix>
+                            <addClasspath>true</addClasspath>
+                        </manifest>
+                    </archive>
+                    <includes>
+                        <!-- 只打包指定目录的文件 -->
+                        <include>io/geekidea/fastspringboot/**</include>
+                    </includes>
+                </configuration>
             </plugin>
 
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <skipTests>true</skipTests>
+                    <layout>ZIP</layout>
+                    <includes>
+                        <!-- 项目启动jar包中排除依赖包 -->
+                        <include>
+                            <groupId>non-exists</groupId>
+                            <artifactId>non-exists</artifactId>
+                        </include>
+                    </includes>
                 </configuration>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>target/lib</outputDirectory>
+                            <overWriteReleases>false</overWriteReleases>
+                            <overWriteSnapshots>false</overWriteSnapshots>
+                            <overWriteIfNewer>true</overWriteIfNewer>
+                            <includeScope>compile</includeScope>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.0.2</version>
+                <version>3.1.0</version>
             </plugin>
 
             <plugin>
@@ -297,27 +327,23 @@
                 </configuration>
             </plugin>
 
-
+            <!-- 打包时跳过测试 -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.1</version>
                 <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <classpathPrefix></classpathPrefix>
-                            <mainClass>io.geekidea.fastspringboot.Application</mainClass>
-                        </manifest>
-                    </archive>
+                    <skipTests>true</skipTests>
                 </configuration>
             </plugin>
+
+            <!-- 打包插件 -->
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.1.0</version>
                 <configuration>
-                    <!-- Specifies the configuration file of the assembly plugin -->
                     <descriptors>
-                        <descriptor>src/main/assembly/package.xml</descriptor>
+                        <descriptor>src/main/assembly/assembly.xml</descriptor>
                     </descriptors>
                 </configuration>
                 <executions>
@@ -331,32 +357,7 @@
                 </executions>
             </plugin>
 
-
         </plugins>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     </build>
 

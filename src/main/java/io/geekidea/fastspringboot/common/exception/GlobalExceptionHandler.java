@@ -5,9 +5,8 @@ import io.geekidea.fastspringboot.common.api.ApiCode;
 import io.geekidea.fastspringboot.common.api.ApiResult;
 import io.geekidea.fastspringboot.common.constant.ResponseCode;
 import io.geekidea.fastspringboot.util.AnsiUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.fusesource.jansi.Ansi;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindingResult;
@@ -29,8 +28,8 @@ import java.util.List;
  */
 @ControllerAdvice
 @RestController
+@Slf4j
 public class GlobalExceptionHandler {
-    private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     /**
      * 非法参数验证异常
@@ -47,7 +46,7 @@ public class GlobalExceptionHandler {
             list.add(fieldError.getDefaultMessage());
         }
         Collections.sort(list);
-        logger.error("fieldErrors"+ JSON.toJSONString(list));
+        log.error("fieldErrors"+ JSON.toJSONString(list));
         return ApiResult.failed(ApiCode.PARAMETER_EXCEPTION);
     }
 
@@ -59,7 +58,7 @@ public class GlobalExceptionHandler {
 //    @ExceptionHandler(value = SysLoginException.class)
 //    @ResponseStatus(HttpStatus.OK)
 //    public ApiResult sysLoginExceptionHandler(SysLoginException exception) {
-//        logger.warn("系统登录异常:" + exception.getMessage());
+//        log.warn("系统登录异常:" + exception.getMessage());
 //        return new ApiResult(500,exception.getMessage());
 //    }
 
@@ -73,7 +72,7 @@ public class GlobalExceptionHandler {
     public ApiResult businessExceptionHandler(BusinessException exception) {
         StackTraceElement[] stackTraceElements = exception.getStackTrace();
         String exceptionMsg = "businessException:" + exception.getMessage()+":"+stackTraceElements[0].toString();
-        logger.error(AnsiUtil.getAnsi(Ansi.Color.RED,exceptionMsg),exception);
+        log.error(AnsiUtil.getAnsi(Ansi.Color.RED,exceptionMsg),exception);
         Integer code = exception.getCode();
         code = (code==null?ResponseCode.BUSINESS_EXCEPTION:code);
         ApiResult apiResult = new ApiResult();
@@ -90,7 +89,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     @ResponseStatus(HttpStatus.OK)
     public ApiResult exceptionHandler(Exception exception) {
-        logger.error("exception:",exception);
+        log.error("exception:",exception);
         return ApiResult.failed(ApiCode.SYSTEM_EXCEPTION);
     }
 
@@ -102,7 +101,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = HttpMessageNotReadableException.class)
     @ResponseStatus(HttpStatus.OK)
     public ApiResult httpMessageNotReadableException(HttpMessageNotReadableException exception) {
-        logger.error("httpMessageNotReadableException:",exception);
+        log.error("httpMessageNotReadableException:",exception);
         return ApiResult.failed(ApiCode.PARAMETER_PARSE_EXCEPTION);
     }
 
@@ -115,7 +114,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = HttpMediaTypeException.class)
     @ResponseStatus(HttpStatus.OK)
     public ApiResult httpMediaTypeException(HttpMediaTypeException exception) {
-        logger.error("httpMediaTypeException:",exception);
+        log.error("httpMediaTypeException:",exception);
         return ApiResult.failed(ApiCode.HTTP_MEDIA_TYPE_EXCEPTION);
     }
 }

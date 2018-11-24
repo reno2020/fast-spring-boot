@@ -1,5 +1,6 @@
 package io.geekidea.fastspringboot.util;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.env.Environment;
@@ -9,9 +10,8 @@ import org.springframework.core.env.Environment;
  * @author liujixiang
  * @date 2018-11-08
  */
+@Slf4j
 public class LoginUtil {
-
-    private static final Logger logger = LoggerFactory.getLogger(LoginUtil.class);
 
     /**
      * TOKEN有效时间，单位分钟
@@ -22,7 +22,7 @@ public class LoginUtil {
         Environment environment = SpringContextUtil.getBean(Environment.class);
         String time = environment.getProperty("fastspringboot.login.token.valid.time.minute");
         TOKEN_VALID_TIME_MINUTE = Integer.valueOf(time);
-        logger.info("TOKEN_VALID_TIME_MINUTE:{}",TOKEN_VALID_TIME_MINUTE);
+        log.info("TOKEN_VALID_TIME_MINUTE:{}",TOKEN_VALID_TIME_MINUTE);
     }
 
 //    /**

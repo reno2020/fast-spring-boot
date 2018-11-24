@@ -5,14 +5,13 @@ import com.alibaba.fastjson.JSONObject;
 import io.geekidea.fastspringboot.util.AnsiUtil;
 import io.geekidea.fastspringboot.util.DateUtil;
 import io.geekidea.fastspringboot.util.IpUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.fusesource.jansi.Ansi;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -36,9 +35,8 @@ import java.util.Map;
 // */
 @Aspect
 @Component
+@Slf4j
 public class ResponseResultAop {
-
-    private static Logger logger = LoggerFactory.getLogger(ResponseResultAop.class);
 
     /**
      * 切点
@@ -113,7 +111,7 @@ public class ResponseResultAop {
             } catch (Exception e) {
 
             }
-            logger.info(AnsiUtil.getAnsi(Ansi.Color.GREEN,"requestInfo:"+requestInfo));
+            log.info(AnsiUtil.getAnsi(Ansi.Color.GREEN,"requestInfo:"+requestInfo));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -142,9 +140,9 @@ public class ResponseResultAop {
 //                ResponseResult rr = (ResponseResult) responseResult;
 //                Integer code = rr.getCode();
 //                if (code == 500){
-//                    logger.error(AnsiUtil.getAnsi(Ansi.Color.RED,"responseResult:"+JSON.toJSONString(responseResult)));
+//                    log.error(AnsiUtil.getAnsi(Ansi.Color.RED,"responseResult:"+JSON.toJSONString(responseResult)));
 //                }else{
-//                    logger.info(AnsiUtil.getAnsi(Ansi.Color.BLUE,"responseResult:"+JSON.toJSONString(responseResult)));
+//                    log.info(AnsiUtil.getAnsi(Ansi.Color.BLUE,"responseResult:"+JSON.toJSONString(responseResult)));
 //                }
 //            }
 //        } catch (Exception e) {

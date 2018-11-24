@@ -2,6 +2,7 @@ package io.geekidea.fastspringboot.test;
 
 import io.geekidea.fastspringboot.example.redislock.RedisLockExampleService;
 import io.geekidea.fastspringboot.system.entity.SysLog;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -14,6 +15,7 @@ import java.util.concurrent.Executors;
  * @author MrLiu
  * @date 2018/11/10
  */
+@Slf4j
 public class TestRedisTemplate extends BaseTest{
 
     @Autowired
@@ -26,23 +28,23 @@ public class TestRedisTemplate extends BaseTest{
     public void test(){
         redisTemplate.opsForValue().set("hello","Hello Redis...");
         Object hello = redisTemplate.opsForValue().get("hello");
-        System.out.println("hello = " + hello);
+        log.debug("hello = " + hello);
     }
 
 
     @Test
     public void concurrentTest(){
-        System.out.println("concurrentTest...");
+        log.debug("concurrentTest...");
         int count = 100;
         ExecutorService executorService = Executors.newFixedThreadPool(count);
         for (int i = 0; i < count; i++) {
             int finalI = i;
             executorService.execute(() -> {
-                        System.out.println(finalI);
+                        log.debug(finalI+"");
                 String key = "hello"+finalI;
                 redisTemplate.opsForValue().set(key,"Hello Redis..."+finalI);
                 Object hello = redisTemplate.opsForValue().get(key);
-                System.out.println(hello);
+                log.debug(hello+"");
             }
 
             );
@@ -53,13 +55,13 @@ public class TestRedisTemplate extends BaseTest{
 
     @Test
     public void concurrentTestUpdate(){
-        System.out.println("concurrentTestUpdate...");
+        log.debug("concurrentTestUpdate...");
         int count = 10;
         ExecutorService executorService = Executors.newFixedThreadPool(count);
         for (int i = 0; i < count; i++) {
             int finalI = i;
             executorService.execute(() -> {
-                System.out.println("i = " + finalI);
+                log.debug("i = " + finalI);
                 SysLog sysLog = new SysLog();
                 sysLog.setLogId(1060439085228830721L);
                 sysLog.setContent("test redis lock " + LocalDateTime.now());

@@ -36,9 +36,9 @@ public class RedisLockExampleServiceImpl implements RedisLockExampleService {
             throw new RuntimeException("该ID已经在修改，请稍后再试。");
         }
 
-        System.out.println("update...");
+        log.debug("update...");
         int result = sysLogMapper.updateById(sysLog);
-        System.out.println("result:" + result);
+        log.debug("result:" + result);
         return result == 1;
     }
 

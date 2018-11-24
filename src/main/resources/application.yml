@@ -16,8 +16,8 @@ logging:
         fastspringboot: DEBUG
     org:
       springframework:
-        web: INFO
-    root: INFO
+        web: DEBUG
+    root: DEBUG
   pattern:
     console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %clr([%p]){green} %X{IDENTIFIER}[%t]
             %clr(%logger{36}.%M:%L){cyan} - %m%n'

@@ -1,7 +1,6 @@
 package io.geekidea.fastspringboot.common.web.filter;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -14,9 +13,8 @@ import java.util.List;
  * @author liujixiang
  * @date 2018-11-08
  */
+@Slf4j
 public class RequestPathFilter implements Filter {
-
-    private Logger logger = LoggerFactory.getLogger(RequestPathFilter.class);
 
     private static List<String> excludes = new ArrayList<>();
 
@@ -44,7 +42,7 @@ public class RequestPathFilter implements Filter {
             }
         }
         if (isOut){
-            logger.debug("requestURL:"+url);
+            log.debug("requestURL:"+url);
         }
         chain.doFilter(req,response);
     }

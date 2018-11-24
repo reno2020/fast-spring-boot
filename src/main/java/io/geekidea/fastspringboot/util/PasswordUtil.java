@@ -1,5 +1,6 @@
 package io.geekidea.fastspringboot.util;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -8,6 +9,7 @@ import org.apache.commons.lang3.StringUtils;
  * @author liujixiang
  * @date 2018-11-08
  */
+@Slf4j
 public class PasswordUtil {
     private static final String KEY = "io.geekidea.fastspringboot.fastspringboot.pwd.key";
     public static String encrypt(String pwd){
@@ -20,6 +22,6 @@ public class PasswordUtil {
     }
 
     public static void main(String[] args) {
-        System.out.println(encrypt("7c4a8d09ca3762af61e59520943dc26494f8941b"));
+        log.debug(encrypt("7c4a8d09ca3762af61e59520943dc26494f8941b"));
     }
 }
