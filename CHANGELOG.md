@@ -1,5 +1,18 @@
 # fast-spring-boot CHANGELOG
 
+## [v0.x] 
+- 优化AOP日志处理
+- log输出到mongodb
+- scheduled
+- Email
+- security
+- flyway 数据库版本管理
+- 数据表枚举类型自动映射
+- 用户角色权限管理
+- 登录权限拦截器
+- 数据字典
+
+
 ## [v0.5] 2018.11.24
 - 使用maven assembly插件打包
 - 启动提示优化,fast spring boot banner
@@ -7,9 +20,6 @@
 - 将全部的System.out.println()替换成log.debug或者log.info
 - 将Logger全部替换成@Slf4j
 
-@MrLiuCoder
-MrLiuCoder committed 2 minutes ago
- …og.info,Logger全部切换成@Sl4j
 ## [v0.4] 2018.11.13
 - Kafka配置和使用示例
 
