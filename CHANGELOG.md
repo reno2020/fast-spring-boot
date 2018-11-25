@@ -13,6 +13,7 @@
 - 数据字典
 
 
+
 ## [v0.5] 2018.11.24
 - 使用maven assembly插件打包
 - 启动提示优化,fast spring boot banner
