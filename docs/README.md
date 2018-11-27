@@ -3,8 +3,11 @@
 #### fast-spring-boot 项目主页:
    [https://geekidea.io/fast-spring-boot/](https://geekidea.io/fast-spring-boot/)
      
+#### fast-spring-boot index访问地址
+   [http://fast-spring-boot.cfapps.io](http://fast-spring-boot.cfapps.io)
+       
 #### fast-spring-boot api 访问地址
-   [http://fast-spring-boot.cfapps.io/docs](http://fast-spring-boot.cfapps.io)
+   [http://fast-spring-boot.cfapps.io/docs](http://fast-spring-boot.cfapps.io/docs)
      
 #### fast-spring-boot GIT地址:
     git@github.com:geekideaio/fast-spring-boot.git
