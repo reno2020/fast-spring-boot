@@ -1,0 +1,7 @@
+---
+applications:
+- name: fast-spring-boot
+  memory: 1G
+  instances: 1
+  random-route: true
+  path: target/fast-spring-boot.jar

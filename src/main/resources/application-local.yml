@@ -17,7 +17,7 @@ logging:
 server:
   port: 8888
   servlet:
-    context-path: /api
+    context-path: /
 spring:
   datasource:
     password: geekidea.io_91bQhsFnGPPvmlpQ

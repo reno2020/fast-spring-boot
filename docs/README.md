@@ -4,7 +4,7 @@
    [https://geekidea.io/fast-spring-boot/](https://geekidea.io/fast-spring-boot/)
      
 #### fast-spring-boot api 访问地址
-   [http://203.104.32.94:8888/api/docs](http://203.104.32.94:8888/api/docs)
+   [http://fast-spring-boot.cfapps.io/docs](http://fast-spring-boot.cfapps.io)
      
 #### fast-spring-boot GIT地址:
     git@github.com:geekideaio/fast-spring-boot.git
@@ -63,21 +63,21 @@
     io.geekidea.fastspringboot.common.web.interceptor.PermissionInterceptor
 
 #### 前后台交互文档 : swagger
- 访问地址 : [http://localhost:8888/api/docs](http://localhost:8888/api/docs)
+ 访问地址 : [http://fast-spring-boot.cfapps.io/docs](http://fast-spring-boot.cfapps.io/docs)
  
     项目名称 : fast-spring-boot
     项目接口名称 : /api
     端口号 : 8888    
          
 ####  Spring Boot Admin 
-   登录地址 ：[http://localhost:8888/api/login.html](http://localhost:8888/api/login.html)
+   登录地址 ：[http://fast-spring-boot.cfapps.io/login.html](http://fast-spring-boot.cfapps.io/login.html)
    
     账号密码同系统登录的账号密码
     账号 ：admin
     密码 ：123456
     
 ####  枚举类型字典列表
-   访问地址 ：[http://localhost:8888/api/doc/dictView](http://localhost:8888/api/doc/dictView)
+   访问地址 ：[http://fast-spring-boot.cfapps.io/doc/dictView](http://fast-spring-boot.cfapps.io/doc/dictView)
     
 #### 前后台交互参数约定:
     请求参数 : JSON格式
