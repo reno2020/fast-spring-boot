@@ -62,9 +62,8 @@ public class JacksonConfig implements WebMvcConfigurer {
         objectMapper.disable(DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE);
 
 
-        //不显示为null的字段
-//        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         SimpleModule simpleModule = new SimpleModule();
+        // Long类型序列化成字符串，避免Long精度丢失
         simpleModule.addSerializer(Long.class, ToStringSerializer.instance);
         simpleModule.addSerializer(Long.TYPE, ToStringSerializer.instance);
 
@@ -93,7 +92,8 @@ public class JacksonConfig implements WebMvcConfigurer {
         objectMapper.registerModule(simpleModule).registerModule(javaTimeModule).registerModule(new ParameterNamesModule());
 
         jackson2HttpMessageConverter.setObjectMapper(objectMapper);
+
         //放到第一个
-        converters.add(jackson2HttpMessageConverter);
+        converters.add(0,jackson2HttpMessageConverter);
     }
 }

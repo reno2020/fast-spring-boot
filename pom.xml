@@ -37,7 +37,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <mybatis-plus-boot-starter.version>3.0.5</mybatis-plus-boot-starter.version>
-        <fastjson.version>1.2.51</fastjson.version>
+        <fastjson.version>1.2.53</fastjson.version>
         <swagger2.version>2.6.0</swagger2.version>
         <swagger.ui.version>2.6.0</swagger.ui.version>
         <commons.lang3.version>3.8.1</commons.lang3.version>
@@ -291,7 +291,7 @@
 
 
     <!--MAVEN打包选择运行环境-->
-    <!-- 1:local(默认) 本地 2:dev:开发环境 3:test 4:uat 用户验收测试 5.prod:生产环境-->
+    <!-- 1:local(默认) 本地 2:dev:开发环境 3:test 4:uat 用户验收测试 5.prod:生产环境 6.pivotal:发布应用到pivotal.io -->
     <profiles>
         <profile>
             <id>local</id>
@@ -333,6 +333,15 @@
             <id>prod</id>
             <properties>
                 <profileActive>prod</profileActive>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>pivotal</id>
+            <properties>
+                <profileActive>pivotal</profileActive>
             </properties>
             <activation>
                 <activeByDefault>false</activeByDefault>

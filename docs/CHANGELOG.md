@@ -12,7 +12,27 @@
 - 登录权限拦截器
 - 数据字典
 
+## [v0.6] 2018.11.30
+- 控制器方法默认加上@Valid参数校验注解
+- 优化参数校验异常,输出字段校验错误信息
+- 优化代码生成器模板格式和多余的导入
+- 使用javax.validation包作为属性校验器，如:@NotBlank
 
+- 新增pom-assembly.xml:打包成tar.gz
+- pom.xml打包成原生spring boot jar
+- 新增stop.sh,restart.sh shell脚本
+- sys_log.sql数据表初始化脚本,在resources/db目录中
+
+- 新增manifest.yml,pivotal.io公有云配置文件
+- 新增application-pivotal.yml配置文件,配置pivotal中使用的mysql,redis,rabbitmq服务相关信息
+- pivotal.io使用文档
+    - pivotal.io 可以免费发布spring boot.jar应用,并可免费使用mysql/redis/rabbitmq等服务
+    - 注册：https://account.run.pivotal.io/z/uaa/sign-up
+    - 登录控制台：https://console.run.pivotal.io/ 进入组织，会提供2个G的内存
+    - 命令行上传jar到pivotal.io步骤：https://pivotal.io/platform/pcf-tutorials/getting-started-with-pivotal-cloud-foundry/introduction
+    - 如何开通mysql/redis/rabbitmq:控制台的MarketPlace中搜索mysql,rabbit,redis，然后创建
+    - 创建之后再组织的service中可以查看一创建的服务，并可进入其控制台查看连接地址等信息
+    - 在组织中，还可以查看对应应用的运行日志
 
 ## [v0.5] 2018.11.24
 - 使用maven assembly插件打包

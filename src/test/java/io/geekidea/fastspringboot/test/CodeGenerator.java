@@ -152,7 +152,12 @@ public class CodeGenerator {
         strategy.setInclude(TABLE_NAME);
         strategy.setSuperEntityColumns(SUPER_ENTITY_COMMON_COLUMNS);
         strategy.setControllerMappingHyphenStyle(true);
-        strategy.setTablePrefix(pc.getModuleName() + "_");
+        /**
+         * 注意，根据实际情况，进行设置
+         * 当表名称的前缀和模块名称一样时，会去掉表的前缀
+         * 比如模块名称为user,表明为user_info,则生成的实体名称是Info.java,一定要注意
+         */
+        //strategy.setTablePrefix(pc.getModuleName() + "_");
         mpg.setStrategy(strategy);
         mpg.execute();
     }

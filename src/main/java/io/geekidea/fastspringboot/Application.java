@@ -39,10 +39,16 @@ public class Application {
         String projectVersion = environment.getProperty("info.project-version");
         // 项目profile
         String profileActive = environment.getProperty("spring.profiles.active");
+        // 项目路径
+        String contextPath = environment.getProperty("server.servlet.context-path");
+        // 项目端口
+        String port = environment.getProperty("server.port");
 
         log.info("projectFinalName : {}",projectFinalName);
         log.info("projectVersion : {}",projectVersion);
         log.info("profileActive : {}",profileActive);
+        log.info("contextPath : {}",contextPath);
+        log.info("port : {}",port);
 
         String fastSpringBoot = "______        _     _____            _              ______             _   \n" +
                 "|  ___|      | |   /  ___|          (_)             | ___ \\           | |  \n" +
@@ -55,7 +61,7 @@ public class Application {
 
         String fastSpringBootBanner = AnsiUtil.getAnsi(Ansi.Color.BLUE,fastSpringBoot) +
                 AnsiUtil.getAnsi(Ansi.Color.YELLOW,"  ::    Fast Spring Boot ::         (v" + projectVersion + ")");
-        log.info("\n\n{}\n",fastSpringBootBanner);
+        log.info("\n{}\n",fastSpringBootBanner);
 
         String startSuccess = " ____    __                    __        ____                                                   \n" +
                 "/\\  _`\\ /\\ \\__                /\\ \\__    /\\  _`\\                                                 \n" +
@@ -69,10 +75,10 @@ public class Application {
 
         String homeUrl = "http://" + IpUtil.getLocalhostIp() + ":8888/api";
         String swaggerUrl = "http://" + IpUtil.getLocalhostIp() + ":8888/api/docs";
-        log.info("\nhome:{}",AnsiUtil.getAnsi(Ansi.Color.BLUE,homeUrl));
-        log.info("\nswagger api docs:{}",AnsiUtil.getAnsi(Ansi.Color.BLUE,swaggerUrl));
+        log.info("home:{}",homeUrl);
+        log.info("docs:{}",swaggerUrl);
         log.info("fast-spring-boot project start success...........");
-        log.info("\n\n{}\n",AnsiUtil.getAnsi(Ansi.Color.GREEN,startSuccess));
+        log.info("\n{}",AnsiUtil.getAnsi(Ansi.Color.GREEN,startSuccess));
     }
 
 }

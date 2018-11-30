@@ -30,7 +30,7 @@ public class RedisLockExampleServiceImpl implements RedisLockExampleService {
     public boolean update(SysLog sysLog) {
         // 使用redisTemplate setIfAbsent实现简单的分布式锁
         // TODO 使用AOP切面优化
-        Long redisKey = sysLog.getLogId();
+        String redisKey = String.valueOf(sysLog.getLogId());
         Boolean flag = redisTemplate.opsForValue().setIfAbsent(redisKey,sysLog.toString(),1, TimeUnit.MINUTES);
         if (!flag){
             throw new RuntimeException("该ID已经在修改，请稍后再试。");

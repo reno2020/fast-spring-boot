@@ -14,7 +14,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author liujixiang
- * @since 2018-11-10
+ * @since 2018-11-30
  */
 public interface SysLogService extends BaseService<SysLog> {
     /**

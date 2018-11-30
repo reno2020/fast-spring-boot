@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
  * </p>
  *
  * @author liujixiang
- * @since 2018-11-10
+ * @since 2018-11-30
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
@@ -40,6 +40,5 @@ public class SysLog extends BaseEntity {
 
     @ApiModelProperty(value = "创建时间")
     private LocalDateTime createTime;
-
 
 }

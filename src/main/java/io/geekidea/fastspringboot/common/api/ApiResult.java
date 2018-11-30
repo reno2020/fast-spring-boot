@@ -9,7 +9,7 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Optional;
 
 /**
@@ -38,7 +38,7 @@ public class ApiResult<T> implements Serializable {
     @ApiModelProperty("响应时间")
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime time = LocalDateTime.now();
+    private Date time = new Date();
 
     public ApiResult() {
     }
@@ -63,6 +63,10 @@ public class ApiResult<T> implements Serializable {
 
     public static <T> ApiResult<T> failed(IErrorCode errorCode) {
         return restResult(null, errorCode);
+    }
+
+    public static <T> ApiResult<T> failed(IErrorCode errorCode,T data) {
+        return restResult(data, errorCode);
     }
 
     public static <T> ApiResult<T> restResult(T data, IErrorCode errorCode) {

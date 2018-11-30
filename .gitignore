@@ -4,7 +4,7 @@
 /.project
 /bin/
 /target/
-/src/main/webapp/.idea/
 /.springBeans
 /.idea/
 *.iml
+.factorypath

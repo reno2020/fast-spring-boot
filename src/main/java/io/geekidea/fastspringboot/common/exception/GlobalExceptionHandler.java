@@ -47,7 +47,7 @@ public class GlobalExceptionHandler {
         }
         Collections.sort(list);
         log.error("fieldErrors"+ JSON.toJSONString(list));
-        return ApiResult.failed(ApiCode.PARAMETER_EXCEPTION);
+        return ApiResult.failed(ApiCode.PARAMETER_EXCEPTION,list);
     }
 
     /**

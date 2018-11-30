@@ -363,7 +363,7 @@
 
 
     <!--MAVEN打包选择运行环境-->
-    <!-- 1:local(默认) 本地 2:dev:开发环境 3:test 4:uat 用户验收测试 5.prod:生产环境-->
+    <!-- 1:local(默认) 本地 2:dev:开发环境 3:test 4:uat 用户验收测试 5.prod:生产环境 6.pivotal:发布应用到pivotal.io -->
     <profiles>
         <profile>
             <id>local</id>
@@ -405,6 +405,15 @@
             <id>prod</id>
             <properties>
                 <profileActive>prod</profileActive>
+            </properties>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>pivotal</id>
+            <properties>
+                <profileActive>pivotal</profileActive>
             </properties>
             <activation>
                 <activeByDefault>false</activeByDefault>

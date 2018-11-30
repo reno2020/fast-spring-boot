@@ -1,7 +1,7 @@
 ---
 applications:
 - name: fast-spring-boot
-  memory: 1G
+  memory: 2G
   instances: 1
-  random-route: true
+  domain: cfapps.io
   path: target/fast-spring-boot.jar

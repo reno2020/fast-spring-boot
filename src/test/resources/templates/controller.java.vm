@@ -1,6 +1,5 @@
 package ${package.Controller};
 
-import com.alibaba.fastjson.JSON;
 import ${package.Entity}.${entity};
 import ${package.Service}.${table.serviceName};
 import ${cfg.queryParamPath};
@@ -26,6 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.stereotype.Controller;
 #end
 
+import javax.validation.Valid;
 
 /**
  * <p>
@@ -61,10 +61,8 @@ public class ${table.controllerName} {
     */
     @PostMapping("/add")
     @ApiOperation(value = "添加${entity}对象",notes = "添加$!{table.comment}",response = ApiResult.class)
-    public ApiResult<Boolean> addSysUser(@RequestBody ${entity} ${cfg.entityObjectName}) throws Exception{
-        log.debug("${cfg.entityObjectName}:{}", JSON.toJSONString(${cfg.entityObjectName}));
+    public ApiResult<Boolean> addSysUser(@Valid @RequestBody ${entity} ${cfg.entityObjectName}) throws Exception{
         boolean flag = ${cfg.serviceObjectName}.save(${cfg.entityObjectName});
-        log.debug("flag:{}",flag);
         return success(flag);
     }
 
@@ -73,10 +71,8 @@ public class ${table.controllerName} {
     */
     @PostMapping("/update")
     @ApiOperation(value = "修改${entity}对象",notes = "修改$!{table.comment}",response = ApiResult.class)
-    public ApiResult<Boolean> updateSysUser(@RequestBody ${entity} ${cfg.entityObjectName}) throws Exception{
-        log.debug("${cfg.entityObjectName}:{}", JSON.toJSONString(${cfg.entityObjectName}));
+    public ApiResult<Boolean> updateSysUser(@Valid @RequestBody ${entity} ${cfg.entityObjectName}) throws Exception{
         boolean flag = ${cfg.serviceObjectName}.updateById(${cfg.entityObjectName});
-        log.debug("flag:{}",flag);
         return success(flag);
     }
 
@@ -85,10 +81,8 @@ public class ${table.controllerName} {
     */
     @PostMapping("/delete")
     @ApiOperation(value = "删除${entity}对象",notes = "删除$!{table.comment}",response = ApiResult.class)
-    public ApiResult<Boolean> deleteSysUser(@RequestBody IdParam idParam) throws Exception{
-        log.debug("idParam:{}", JSON.toJSONString(idParam));
+    public ApiResult<Boolean> deleteSysUser(@Valid @RequestBody IdParam idParam) throws Exception{
         boolean flag = ${cfg.serviceObjectName}.removeById(idParam.getId());
-        log.debug("flag:{}",flag);
         return success(flag);
     }
 
@@ -97,10 +91,8 @@ public class ${table.controllerName} {
     */
     @PostMapping("/info")
     @ApiOperation(value = "获取${entity}对象详情",notes = "查看$!{table.comment}",response = ${entity}QueryVo.class)
-    public ApiResult<${entity}QueryVo> getSysUser(@RequestBody IdParam idParam) throws Exception{
-        log.debug("idParam:{}", JSON.toJSONString(idParam));
+    public ApiResult<${entity}QueryVo> getSysUser(@Valid @RequestBody IdParam idParam) throws Exception{
         ${entity}QueryVo ${cfg.entityObjectName}QueryVo = ${cfg.serviceObjectName}.get${entity}ById(idParam.getId());
-        log.debug("${cfg.entityObjectName}QueryVo:{}",${cfg.entityObjectName}QueryVo);
         return success(${cfg.entityObjectName}QueryVo);
     }
 
@@ -109,10 +101,8 @@ public class ${table.controllerName} {
      */
     @PostMapping("/getPageList")
     @ApiOperation(value = "获取${entity}分页列表",notes = "$!{table.comment}分页列表",response = ${entity}QueryVo.class)
-    public ApiResult<Paging<${entity}QueryVo>> get${entity}PageList(@RequestBody(required = false) ${entity}QueryParam ${cfg.entityObjectName}QueryParam) throws Exception{
-        log.debug("${cfg.entityObjectName}QueryParam:{}", JSON.toJSONString(${cfg.entityObjectName}QueryParam));
+    public ApiResult<Paging<${entity}QueryVo>> get${entity}PageList(@Valid @RequestBody(required = false) ${entity}QueryParam ${cfg.entityObjectName}QueryParam) throws Exception{
         Paging<${entity}QueryVo> paging = ${cfg.entityObjectName}Service.get${entity}PageList(${cfg.entityObjectName}QueryParam);
-        log.debug("paging:{}",paging);
         return success(paging);
     }
 

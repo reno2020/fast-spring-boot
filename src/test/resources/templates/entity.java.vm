@@ -2,8 +2,6 @@ package ${package.Entity};
 
 #foreach($pkg in ${table.importPackages})
 import ${pkg};
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 #end
 #if(${swagger2})
 import io.swagger.annotations.ApiModel;
@@ -49,6 +47,8 @@ public class ${entity} implements Serializable {
     private static final long serialVersionUID = 1L;
 ## ----------  BEGIN 字段循环遍历  ----------
 #foreach($field in ${table.fields})
+## 自定义属性，是否是主键
+#set($custom_is_pk=false)
 
 #if(${field.keyFlag})
 #set($keyPropertyName=${field.propertyName})
@@ -67,7 +67,10 @@ public class ${entity} implements Serializable {
 #if(${field.keyIdentityFlag})
     @TableId(value = "${field.name}", type = IdType.AUTO)
 #elseif(!$null.isNull(${idType}) && "$!idType" != "")
+## 设置主键注解
 @TableId(value = "${field.name}", type = IdType.${idType})
+## 是主键类型
+#set($custom_is_pk=true)
 #elseif(${field.convert})
     @TableId("${field.name}")
 #end
@@ -90,10 +93,13 @@ public class ${entity} implements Serializable {
 #if(${logicDeleteFieldName}==${field.name})
     @TableLogic
 #end
+#if(${custom_is_pk})
+    private ${field.propertyType} ${field.propertyName};
+#else
 private ${field.propertyType} ${field.propertyName};
 #end
+#end
 ## ----------  END 字段循环遍历  ----------
-
 #if(!${entityLombokModel})
 #foreach($field in ${table.fields})
 #if(${field.propertyType.equals("boolean")})
