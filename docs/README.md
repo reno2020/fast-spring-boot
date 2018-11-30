@@ -12,6 +12,9 @@
 #### fast-spring-boot GIT地址:
     git@github.com:geekideaio/fast-spring-boot.git
     
+#### fast-spring-boot CHANGELOG
+   [CHANGELOG](https://github.com/geekidea/fast-spring-boot/blob/master/docs/CHANGELOG.md)
+    
 #### fast-spring-boot技术栈:
     Jdk 版本 : 1.8
     MySQL 5.7
