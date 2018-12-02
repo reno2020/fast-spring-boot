@@ -60,6 +60,13 @@
             </includes>
         </fileSet>
 
+        <!-- 指定日志目录 -->
+        <fileSet>
+            <directory>${basedir}/src/logs</directory>
+            <outputDirectory>logs</outputDirectory>
+            <fileMode>0755</fileMode>
+        </fileSet>
+
         <!-- 包含根目录下的文件 -->
         <fileSet>
             <directory>/</directory>

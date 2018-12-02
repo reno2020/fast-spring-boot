@@ -4,7 +4,7 @@
 
     <groupId>io.geekidea</groupId>
     <artifactId>fast-spring-boot</artifactId>
-    <version>0.5.RELEASE</version>
+    <version>0.6.RELEASE</version>
     <packaging>jar</packaging>
 
     <name>fast-spring-boot</name>
@@ -16,6 +16,9 @@
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
         </license>
     </licenses>
+
+    <!-- maven指定pom-assembly.xml打包命令: mvn clean package -f pom-assembly.xml -->
+
     <developers>
         <developer>
             <id>geekidea.io</id>
