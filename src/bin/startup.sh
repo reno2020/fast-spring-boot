@@ -62,7 +62,7 @@ fi
 
 # 如果项目运行日志存在,则重命名备份
 if [ -f "${LOG_PATH}" ]; then
-	mv ${LOG_PATH} "${LOG_DIR}/${APPLICATION}_back_${NOW}.log"
+	mv ${LOG_PATH} "${LOG_BACK_DIR}/${APPLICATION}_back_${NOW}.log"
 fi
 
 # 创建新的项目运行日志
