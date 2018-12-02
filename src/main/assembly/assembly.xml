@@ -69,7 +69,7 @@
 
         <!-- 包含根目录下的文件 -->
         <fileSet>
-            <directory>/</directory>
+            <directory>${basedir}</directory>
             <includes>
                 <include>NOTICE</include>
                 <include>LICENSE</include>
