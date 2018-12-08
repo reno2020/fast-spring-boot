@@ -23,11 +23,6 @@ public class FilterConfig {
         return new CrossDomainFilter();
     }
 
-//    @Bean
-//    public Filter springBootAdminFilter(){
-//        return new SpringBootAdminFilter();
-//    }
-
     @Bean
     public Filter requestPathFilter(){
         return new RequestPathFilter();
@@ -51,25 +46,4 @@ public class FilterConfig {
         return registration;
     }
 
-//    @Bean
-//    @Order(3)
-//    public FilterRegistrationBean springBootAdminFilterBean() {
-//        FilterRegistrationBean registration = new FilterRegistrationBean();
-//        registration.setFilter(springBootAdminFilter());
-//        registration.addUrlPatterns(
-//                "/index.html",
-//                "/api/applications/views/*",
-//                "/api/applications-details/views/details.html",
-//                "/api/applications-logfile/views/logfile.html",
-//                "/api/applications-metrics/views/metrics.html",
-//                "/api/applications-environment/views/environment.html",
-//                "/api/applications-logging/views/logging.html",
-//                "/api/applications-jmx/views/jmx.html",
-//                "/api/applications-threads/views/threads.html",
-//                "/api/applications-auditevents/auditevents.html",
-//                "/api/applications-trace/views/trace.html",
-//                "/api/applications/*/logfile",
-//                "/api/applications/*/env");
-//        return registration;
-//    }
 }

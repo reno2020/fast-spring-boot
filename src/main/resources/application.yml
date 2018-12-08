@@ -23,11 +23,7 @@ logging:
             %clr(%logger{36}.%M:%L){cyan} - %m%n'
     file: '%d{yyyy-MM-dd HH:mm:ss.SSS} [%p] %X{IDENTIFIER}[%t] %logger{36}.%M:%L
             - %m%n'
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
+
 fastspringboot:
   permission:
     interceptor:
@@ -159,6 +155,12 @@ spring:
     template:
       default-topic: fast-spring-boot-topic
 
+# 开启和暴露所有端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
 
 swagger:
   base:
@@ -171,3 +173,5 @@ swagger:
   title: fast-spring-boot
   url: ''
   version: 1.0
+
+

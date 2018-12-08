@@ -1,6 +1,5 @@
 package io.geekidea.fastspringboot;
 
-import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import io.geekidea.fastspringboot.util.AnsiUtil;
 import io.geekidea.fastspringboot.util.IpUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -11,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @EnableConfigurationProperties
 @EnableScheduling
-@EnableAdminServer
+@EnableAsync
 @SpringBootApplication
 @MapperScan({"io.geekidea.fastspringboot.*.mapper"})
 @Slf4j
@@ -73,8 +73,8 @@ public class Application {
                 "                                                                                                \n" +
                 "                                                                                                ";
 
-        String homeUrl = "http://" + IpUtil.getLocalhostIp() + ":8888/api";
-        String swaggerUrl = "http://" + IpUtil.getLocalhostIp() + ":8888/api/docs";
+        String homeUrl = "http://" + IpUtil.getLocalhostIp() + ":" + port + contextPath;
+        String swaggerUrl = "http://" + IpUtil.getLocalhostIp() + ":" + port + contextPath + "docs";
         log.info("home:{}",homeUrl);
         log.info("docs:{}",swaggerUrl);
         log.info("fast-spring-boot project start success...........");

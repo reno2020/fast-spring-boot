@@ -13,8 +13,6 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
-import de.codecentric.boot.admin.server.domain.values.Registration;
-import de.codecentric.boot.admin.server.utils.jackson.RegistrationDeserializer;
 import io.geekidea.fastspringboot.common.constant.DatePattern;
 import io.geekidea.fastspringboot.config.json.jackson.deserializer.JacksonDateDeserializer;
 import io.geekidea.fastspringboot.config.json.jackson.deserializer.JacksonDoubleDeserializer;
@@ -73,10 +71,6 @@ public class JacksonConfig implements WebMvcConfigurer {
 
         simpleModule.addDeserializer(Integer.class,new JacksonIntegerDeserializer());
         simpleModule.addDeserializer(Double.class,new JacksonDoubleDeserializer());
-
-        // 解决spring boot admin json报错问题
-        simpleModule.addDeserializer(Registration.class, new RegistrationDeserializer());
-
 
         // jdk8日期序列化和反序列化设置
         JavaTimeModule javaTimeModule = new JavaTimeModule();

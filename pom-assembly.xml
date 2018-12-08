@@ -50,7 +50,6 @@
         <commons.io.version>2.6</commons.io.version>
         <reflections.version>0.9.11</reflections.version>
         <hibernate-validator.version>6.0.13.Final</hibernate-validator.version>
-        <spring-boot-admin.version>2.1.0</spring-boot-admin.version>
         <project-parent.version>${parent.version}</project-parent.version>
         <commons_codec_version>1.9</commons_codec_version>
         <commons_net_version>3.6</commons_net_version>
@@ -212,24 +211,6 @@
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
         </dependency>
-
-        <!-- Spring boot 监控 start -->
-        <dependency>
-            <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-server</artifactId>
-            <version>${spring-boot-admin.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-server-ui</artifactId>
-            <version>${spring-boot-admin.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-starter-client</artifactId>
-            <version>${spring-boot-admin.version}</version>
-        </dependency>
-        <!-- Spring boot 监控 end -->
 
         <dependency>
             <groupId>org.yaml</groupId>
