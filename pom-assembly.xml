@@ -321,6 +321,13 @@
                 </configuration>
             </plugin>
 
+            <!-- java doc -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+
             <!-- 打包插件 -->
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
