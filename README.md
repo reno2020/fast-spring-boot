@@ -17,7 +17,7 @@
    [https://fast-spring-boot.cfapps.io/docs](https://fast-spring-boot.cfapps.io/docs)
    
 #### fast-spring-boot apidocs 访问地址
-   [https://geekidea.io/fast-spring-boot/apidocs/index.html](https://geekidea.io/fast-spring-boot/apidocs/index.html)
+   [https://geekidea.io/fast-spring-boot/apidocs](https://geekidea.io/fast-spring-boot/apidocs)
    
 #### 项目目标
 - 快速开发
