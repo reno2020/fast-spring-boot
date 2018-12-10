@@ -15,13 +15,12 @@
 | | 10 | spring-rabbit | 2.1.0.RELEASE | RabbitMQ消息队列 |
 | | 11 | Fastjson | 1.2.53 | JSON序列化 |
 | | 12 | Druid | 1.1.10 | 数据库连接池 |
-|    三 | 13 | Spring boot Admin | 2.1.0 | Spring Boot管理控制台 |
-| |14 | commons-lang3 | 3.8.1 | 辅助工具集 |
-| |15 | commons-io | 2.6 | IO流处理 |
-| |16 | commons-pool2 | 2.0 | Redis连接池处理 |
-| |17 | reflections | 0.9.11 | 反射工具 |
-| |18 | commons codec | 1.9 | 编码解码，加密解密 |
-| |19 | commons net | 3.6 | FTP，远程登录 |
-| |20 | kafka-clients | 2.0.0 | Kafka日志处理 |
-| |21 | hibernate-validator | 6.0.13.Final | 对象属性验证处理框架 |
-| |22 | Swagger2 | 2.6.0 | Swagger Api文档 |
+|    三 |13 | commons-lang3 | 3.8.1 | 辅助工具集 |
+| |14 | commons-io | 2.6 | IO流处理 |
+| |15 | commons-pool2 | 2.0 | Redis连接池处理 |
+| |16 | reflections | 0.9.11 | 反射工具 |
+| |17 | commons codec | 1.9 | 编码解码，加密解密 |
+| |18 | commons net | 3.6 | FTP，远程登录 |
+| |29 | kafka-clients | 2.0.0 | Kafka日志处理 |
+| |20 | hibernate-validator | 6.0.13.Final | 对象属性验证处理框架 |
+| |21 | Swagger2 | 2.6.0 | Swagger Api文档 |
