@@ -4,14 +4,20 @@
 
 >集成Spring Boot 2.1,Mybatis,Mybatis Plus,Druid,FastJson,Redis,Rabbit MQ,Kafka等，可使用代码生成器快速开发项目，使用maven assembly打包发布
 
+#### 项目地址
+   [https://github.com/geekidea/fast-spring-boot](https://github.com/geekidea/fast-spring-boot)
+
 #### 项目主页
    [https://geekidea.io/fast-spring-boot/](https://geekidea.io/fast-spring-boot/)
 
 #### fast-spring-boot CHANGELOG
-   [CHANGELOG](http://geekidea.io/fast-spring-boot/changelog.html)
+   [CHANGELOG](https://geekidea.io/fast-spring-boot/changelog.html)
    
-#### fast-spring-boot api 访问地址
-   [http://fast-spring-boot.cfapps.io/docs](http://fast-spring-boot.cfapps.io/docs)
+#### fast-spring-boot swagger api 访问地址
+   [https://fast-spring-boot.cfapps.io/docs](https://fast-spring-boot.cfapps.io/docs)
+   
+#### fast-spring-boot apidocs 访问地址
+   [https://geekidea.io/fast-spring-boot/apidocs](https://geekidea.io/fast-spring-boot/apidocs)
    
 #### 项目目标
 - 快速开发
